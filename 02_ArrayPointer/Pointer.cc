@@ -40,7 +40,7 @@ int main()
     cout << "Value of pointed value = " << *q << endl;
 
     //Heap de-allocation of new int, not of pointer!
-    delete q;
+    delete q;                                                         //pointer still points on heap adress
     cout << "random value after heap de-allocation = " << *q << endl; //random value
 
     int a = 1337;
@@ -58,6 +58,12 @@ int main()
     print_int_pointer(c);
     print_double_pointer(e);
 
-
+    cout << "Memory adress of pointed value from pointer q (on heap) = " << q << endl;
+    q = nullptr; //NULL != nullptr
+    cout << "Memory adress of pointed value from pointer q (on null) = " << q << endl;
+    if (q != nullptr) //safety question after "delete"
+    {
+        cout << "Value of pointed value = " << *q << endl;
+    }
     return 0;
 }
