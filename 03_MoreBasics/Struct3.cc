@@ -56,7 +56,7 @@ void print_vehicle_data_pointer(Vehicle *vehicle)
 
 int main()
 {
-    //Designated struct initialiser list
+    //Designated struct initialiser list (c++20 feature)
     Vehicle v1 = {.id = 1, .velocity = 100.0f, .lane = Lane::CENTER_LANE}; //f makes it float, not double
     print_vehicle_data(v1);
     print_vehicle_data_pointer(&v1); //giving adress of v1 to expected pointer
