@@ -1,6 +1,6 @@
 #include <iostream>
 
-void f(const int &v)
+void f(const int &v) //only changeable parameters into functions with reference except const ref
 {
     std::cout << v;
 }
