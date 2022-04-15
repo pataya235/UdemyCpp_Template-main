@@ -99,5 +99,7 @@ int main()
     }
     offile.close();
 
+    //more important string operations: clear, append, compare, replace, substr
+
     return 0;
 }
