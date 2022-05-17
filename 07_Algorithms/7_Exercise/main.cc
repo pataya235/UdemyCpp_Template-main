@@ -14,11 +14,11 @@ int main()
     std::random_device gen;
     std::bernoulli_distribution dist(0.5);
 
-    BinaryArray target(20, false);
-    // ...
+    BinaryArray target(4, false);
+    std::generate(target.begin(), target.end(), [&] { return dist(gen); }); // mit 0, 1 füllen
 
     BinaryArray input(target.begin(), target.end());
-    // ...
+    std::shuffle(target.begin(), target.end(), std::default_random_engine(42)); //permuttieren
 
     for (std::size_t i = 0; i < target.size(); ++i)
     {
