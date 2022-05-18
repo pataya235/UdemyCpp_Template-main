@@ -8,7 +8,7 @@ using GrayscaleMatrix = std::vector<std::vector<uchar>>;
 class Image
 {
 public:
-    // Konstruktor
+    // 2 Konstruktoren
     Image();
     Image(const unsigned int width, const unsigned int height);
 
