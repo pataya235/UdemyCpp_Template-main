@@ -2,7 +2,7 @@
 
 #include <vector>
 
-using uchar = unsigned char;
+using uchar = unsigned char; //typedef unsigned char uchar;
 using GrayscaleMatrix = std::vector<std::vector<uchar>>;
 
 class Image
@@ -20,7 +20,8 @@ public:
     unsigned int get_height() const;
 
     // Helper
-    void save_image(const char *file_name) const;
+    void save_image(
+        const char *file_name) const; //const after method -> method is not changing member-variables of object instance
 
     // Exercise 1
     void clear_image();
@@ -38,7 +39,7 @@ public:
                    const uchar value);
 
 private:
-    unsigned int m_width;
+    unsigned int m_width; //initialised first
     unsigned int m_height;
-    GrayscaleMatrix m_matrix;
+    GrayscaleMatrix m_matrix; //cant be initialised before m_width or m_height
 };

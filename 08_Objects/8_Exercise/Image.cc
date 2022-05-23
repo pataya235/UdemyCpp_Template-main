@@ -4,13 +4,18 @@
 
 #include "Image.h"
 
-Image::Image() : m_width(0), m_height(0), m_matrix(GrayscaleMatrix(m_width, std::vector<uchar>(m_height, 0)))
+//initialiser list useful, when const vars needs to be initialised before object/instance creation
+
+Image::Image()
+    : m_width(0), m_height(0),
+      m_matrix(GrayscaleMatrix(m_width, std::vector<uchar>(m_height, 0))) // with initialiser list
 {
     std::cout << "Created empty image object!" << std::endl;
 }
 
 Image::Image(const unsigned int width, const unsigned int height)
-    : m_width(width), m_height(height), m_matrix(GrayscaleMatrix(m_width, std::vector<uchar>(m_height, 0)))
+    : m_width(width), m_height(height),
+      m_matrix(GrayscaleMatrix(m_width, std::vector<uchar>(m_height, 0))) // with initialiser list
 {
     std::cout << "Created image object with shape=(" << m_width << "," << m_height << ")!" << std::endl;
     std::cout << "Matrix size: (" << m_matrix.size() << "," << m_matrix[0].size() << ")" << std::endl;
@@ -60,7 +65,8 @@ void Image::draw_line(const unsigned int x1,
 {
 }
 
-void Image::save_image(const char *file_name) const
+void Image::save_image(
+    const char *file_name) const //const after method -> method is not changing member-variables of object instance
 {
     FILE *f = nullptr;
 
