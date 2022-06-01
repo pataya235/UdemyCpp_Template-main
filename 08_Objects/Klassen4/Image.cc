@@ -54,21 +54,43 @@ void Image::set_height(unsigned int new_height)
 // Exercise 1
 void Image::clear_image()
 {
+    m_matrix.clear(); //method of vector class
+    m_height = 0;
+    m_width = 0;
 }
 
 // Exercise 2
 void Image::set_pixel(const unsigned int x, const unsigned int y, const uchar value)
 {
+    m_matrix[x][y] = value;
 }
 
 // Exercise 3
 void Image::resize_image(const unsigned int new_width, const unsigned int new_height)
 {
+    if (new_width != m_width)
+    {
+        m_matrix.resize(new_width); //einmal spaltenanzahl verändern
+        m_width = new_width;
+    }
+
+    if (new_height != m_height)
+    {
+        for (auto &col : m_matrix) //alle reihenanzahlen pro spalte verändern
+        {
+            col.resize(new_height);
+        }
+        m_height = new_height;
+    }
 }
 
 // Exercise 4
 void Image::fill_image(const uchar value)
 {
+    for (auto &col : m_matrix)
+    {
+        std::fill(col.begin(), col.end(), value); //instead of second for-loop
+    }
 }
 
 // Exercise 5
@@ -78,6 +100,49 @@ void Image::draw_line(const unsigned int x1,
                       const unsigned int y2,
                       const uchar value)
 {
+    int length = 0;
+
+    if ((x1 < m_width) && (x2 < m_width) && (y1 < m_height) && (y2 < m_height) && ((x1 == x2) || (y1 == y2)))
+    {
+        if (x1 == x2) //horizontale Linie
+        {
+            if (y1 < y2)
+            {
+                length = y2 - y1;
+                for (int i = 0; i != length; ++i)
+                {
+                    set_pixel(x1, y1 + i, value);
+                }
+            }
+            else
+            {
+                length = y1 - y2;
+                for (int i = 0; i != length; ++i)
+                {
+                    set_pixel(x1, y1 + i, value);
+                }
+            }
+        }
+        if (y1 == y2) //vertikale Linie
+        {
+            if (x1 < x2)
+            {
+                length = x2 - x1;
+                for (int i = 0; i != length; ++i)
+                {
+                    set_pixel(x1 + i, y1, value);
+                }
+            }
+            else
+            {
+                length = x1 - x2;
+                for (int i = 0; i != length; ++i)
+                {
+                    set_pixel(x1 + i, y1, value);
+                }
+            }
+        }
+    }
 }
 
 void Image::save_image(
