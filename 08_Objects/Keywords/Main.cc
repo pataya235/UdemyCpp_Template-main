@@ -9,6 +9,8 @@ void polyFavouriteFood(Animal &animal)
 
 int main()
 {
+    Animal a1; //funktioniert nur mit default oder leerem Konstruktor
+
     {
         std::string animal_name = "Tatze";
         Animal *animal1 = new Animal(animal_name);
