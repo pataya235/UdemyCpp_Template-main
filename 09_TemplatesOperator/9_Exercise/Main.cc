@@ -22,5 +22,17 @@ int main()
     m2 += m2;
     m2.print_matrix();
 
+    Matrix m5 = m2 * 1.5;
+    m5.print_matrix();
+
+    m5 *= 2.5;
+    m5.print_matrix();
+
+    Matrix m6 = m2 / 1.5;
+    m6.print_matrix();
+
+    m6 /= 2.5;
+    m6.print_matrix();
+
     return 0;
 }
